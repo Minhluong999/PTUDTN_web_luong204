@@ -1,0 +1,6 @@
+D:\app tren nen wed\Solution1\UniversalHealthToolkit\bin\Debug\UniversalHealthToolkit.dll
+D:\app tren nen wed\Solution1\UniversalHealthToolkit\bin\Debug\UniversalHealthToolkit.pdb
+D:\app tren nen wed\Solution1\UniversalHealthToolkit\obj\Debug\UniversalHealthToolkit.csproj.AssemblyReference.cache
+D:\app tren nen wed\Solution1\UniversalHealthToolkit\obj\Debug\UniversalHealthToolkit.csproj.CoreCompileInputs.cache
+D:\app tren nen wed\Solution1\UniversalHealthToolkit\obj\Debug\UniversalHealthToolkit.dll
+D:\app tren nen wed\Solution1\UniversalHealthToolkit\obj\Debug\UniversalHealthToolkit.pdb

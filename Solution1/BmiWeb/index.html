@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <title>@minhluong BMI Web</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #e9f5ff; /* nền xanh nhạt sáng */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #005a9e; /* xanh đậm hơn cho tiêu đề */
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 9px 12px;
+            margin-top: 6px;
+            border: 1px solid #bcd0e6;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #fdfefe;
+        }
+
+            input:focus, select:focus {
+                border-color: #0078d7;
+                outline: none;
+                box-shadow: 0 0 4px rgba(0,120,215,0.5);
+            }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: #4daaf2;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            button:hover {
+                background: #1e90ff;
+            }
+
+        #out {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f4faff;
+            border: 1px solid #cce0f5;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Máy tính BMI - @minhluong</h2>
+        l
+        <label for="w">Cân nặng (kg):</label>
+        <input id="w" type="number" min="20" max="300">
+
+        <label for="h">Chiều cao (cm):</label>
+        <input id="h" type="number" min="50" max="250">
+
+        <label for="age">Tuổi:</label>
+        <input id="age" type="number" min="5" max="120">
+
+        <label for="sex">Giới tính:</label>
+        <select id="sex">
+            <option value="M">Nam</option>
+            <option value="F">Nữ</option>
+        </select>
+
+        <label for="act">Hệ số vận động (1.2 - 1.9):</label>
+        <input id="act" type="number" step="0.05" min="1.2" max="1.9" value="1.2">
+
+        <button onclick="go()">Tính BMI</button>
+
+        <div id="out">Kết quả sẽ hiển thị ở đây...</div>
+    </div>
+
+    <script>
+        function go() {
+            var data = {
+                w: document.getElementById("w").value,
+                h: document.getElementById("h").value,
+                age: document.getElementById("age").value,
+                sex: document.getElementById("sex").value,
+                act: document.getElementById("act").value
+            };
+            if (!data.w || !data.h || !data.age || !data.sex) {
+                document.getElementById("out").textContent = "⚠️ Vui lòng nhập đầy đủ thông tin.";
+                return;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "api.aspx", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    try {
+                        var res = JSON.parse(xhr.responseText);
+                        if (res.error) {
+                            document.getElementById("out").textContent = "⚠️ Lỗi: " + res.error;
+                        } else {
+                            document.getElementById("out").textContent =
+                                "📊 Chỉ số BMI: " + res.bmi + " → " + res.bmiCategory + "\n"
+                                + "🔥 Chỉ số BMR: " + res.bmr + " kcal/ngày\n"
+                                + "⚡ TDEE (duy trì): " + res.plan.maintain + " kcal/ngày\n"
+                                + "💡 Lời khuyên: " + res.advice + "\n"
+                                + "✍️ " + res.sign;
+                        }
+                    } catch (e) {
+                        document.getElementById("out").textContent = "⚠️ Lỗi xử lý dữ liệu.";
+                    }
+                }
+            };
+            var params = "w=" + encodeURIComponent(data.w)
+                + "&h=" + encodeURIComponent(data.h)
+                + "&age=" + encodeURIComponent(data.age)
+                + "&sex=" + encodeURIComponent(data.sex)
+                + "&act=" + encodeURIComponent(data.act);
+            xhr.send(params);
+        }
+    </script>
+</body>
+</html>
