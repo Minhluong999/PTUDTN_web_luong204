@@ -35,18 +35,44 @@ Bài làm
 
 2.Chạy thử console 
 
+ sau khi tạo project chuột phải vào references -> add references -> tick chọn thư viện UniversalHealthToolkit -> ok
+
+ code file program.cs xong build 
+
+ chuột phải vào tên project Bmiconsole chọn Set as startup project -> ctrl+f5 để chạy chương trình 
+ 
  
 <img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/23f4418b-243f-4214-b589-07e587efed67" />
 
 
 3.Chạy thử Winforms
 
+ sau khi tạo project chuột phải vào references -> add references -> tick chọn thư viện UniversalHealthToolkit -> ok
 
+ code file mainform.cs -> mở mainform.cs[design] để cấu hình winform -> build project
+ 
+ chuột phải vào tên project Bmidesktop chọn Set as startup project -> ctrl+f5 để chạy chương trình 
+
+ 
 <img width="1271" height="667" alt="image" src="https://github.com/user-attachments/assets/5583ed0d-4212-4a83-bf71-3b9e94d13a96" />
 
 
 4.Chạy thử webforms
 
+
+ sau khi tạo project chuột phải vào references -> add references -> tick chọn thư viện UniversalHealthToolkit -> ok
+ 
+
+ Chuột phải vào tên project Bmiweb chọn add -> new item -> tạo file index.html và api.aspx
+
+ code file index.html và api.aspx.cs 
+
+ vào iis manager -> add website -> đặt mane và host name local -> ok
+
+ vào notepad adm nhập host local 
+
+ vào lại visual studio chuột phải vào tên project Bmiweb chọn Set as startup project -> ctrl+f5 để chạy chương trình 
+ 
 
 <img width="884" height="725" alt="image" src="https://github.com/user-attachments/assets/69cfa0bf-63bf-4550-a033-67e8497fe2c2" />
 
