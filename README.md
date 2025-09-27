@@ -19,10 +19,14 @@ Bài làm
 
 Đề tài : Máy tinh BMI
 
-1. Tạo SOLUTION sau đó add các project : 
+1. Tạo SOLUTION sau đó add các project :
+
 -thư viện library: UniversalHealthToolkit
+
 -console: Bmiconsole
+
 -winforms: Bmidesktop
+
 -webforms:Bmiweb
 
 
